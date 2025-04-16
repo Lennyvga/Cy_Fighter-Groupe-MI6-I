@@ -4,7 +4,6 @@
 typedef struct{
     char nom[20];
     int pv;
-    int pvMAx;
     int attaque;
     int defense;
     int agilite;
