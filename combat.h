@@ -3,9 +3,11 @@
 
 #include "perso.h"
 
-int nbJoueur(int *nbJ );
-int creationJoueur(Joueur joueur[], int *nbJ);
+void nbJoueur(int *nbJ );
+void creationJoueur(Joueur joueur[], int *nbJ);
 void afficherPersos(Info perso[]);
+void choisirPersos(Joueur *joueur);
+//void testPerso(Info perso[]);
 
 
 #endif

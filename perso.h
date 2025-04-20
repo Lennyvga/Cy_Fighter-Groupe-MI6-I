@@ -10,9 +10,12 @@ typedef struct{
     int vitesse;
     }Info;
 
+    extern Info perso[3];//A COMPRENDRE COMMENT ON UTILISE !!!!!
+
 typedef struct{
-    char nom;
-}Joueur;
+    char *nom;
+    int *equipe;
+    }Joueur;
     
 typedef struct{
     char nom;
