@@ -6,7 +6,7 @@
 void nbJoueur(int *nbJ );
 void creationJoueur(Joueur joueur[], int *nbJ);
 void afficherPersos(Info perso[]);
-void choisirPersos(Joueur *joueur);
+void choisirPersos(Joueur *joueur, int *nbCombattant, int *nbJ, Joueur NomJoueur[]);
 //void testPerso(Info perso[]);
 
 

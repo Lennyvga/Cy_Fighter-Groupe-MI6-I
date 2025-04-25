@@ -4,35 +4,34 @@
 #include "perso.h"
 
 
-/*void testPerso(Info perso[]) {
-  for (int i = 0; i < 3; i++) {
-      printf("Personnage %d :\n", i + 1);
-      printf("  Nom      : %s\n", perso[i].nom);
-      printf("  PV       : %d\n", perso[i].pv);
-      printf("  Attaque  : %d\n", perso[i].attaque);
-      printf("  Defense  : %d\n", perso[i].defense);
-      printf("  Agilité  : %d\n", perso[i].agilite);
-      printf("  Vitesse  : %d\n", perso[i].vitesse);
-      printf("\n");
-  }
-}*/
+
 
  void nbJoueur(int *nbJ){
+  int correct = 0;
+
+while(!correct){
   printf("Nombre de joueur qui jouent : ");
-    scanf("%d", nbJ);
-while(*nbJ != 1 && *nbJ != 2){
-  printf("Veuilez saisir 1 ou 2 joueurs. ");
-    scanf("%d", nbJ);
+    if (scanf("%d", nbJ) == 1 && (*nbJ == 1 || *nbJ == 2)){
+      correct = 1;
+    }
+    else{
+  printf("Erreur. Veuilez saisir 1 ou 2 joueurs.\n ");
+    }
+    int c;
+        while ((c = getchar()) != '\n' && c != EOF) ;
 }
-  printf("Nombre de joueurs :  %d\n", *nbJ);
 
 }
+  //printf("Nombre de joueurs :  %d\n", *nbJ);
+ 
+
 
 void creationJoueur (Joueur NomJoueur[], int *nbJ){
 for(int i = 0; i< *nbJ; i++){
-   NomJoueur[i].nom = malloc(20 * sizeof(char)); // Modification taille tableau nom du joueur
+
+   NomJoueur[i].nom = malloc(20 * sizeof(char)); // Modification taille tableau nom du joueur avec le nom tampon
 if(NomJoueur[i].nom == NULL){
-  printf("Erreur d'allocation");
+  printf("Erreur d'allocation - 1 ");
   exit(1);
   }
 }
@@ -55,33 +54,74 @@ void afficherPersos(Info perso[]) {
   }
 }
 
-void choisirPersos(Joueur *joueur){
+void choisirPersos(Joueur *combattant, int *nbCombattant, int *nbJ, Joueur NomJoueur[]) {
     int i = 0;
     int num;
+    for(int k = 0; k < *nbJ; k++){
 
-    joueur->equipe = malloc(3 * sizeof(int) );
-    if( joueur->equipe==NULL){
-      printf("Erreur d'allocation");
+    combattant->numEquipe = malloc(*nbCombattant * sizeof(Joueur) ); // tableau de structure
+    if( combattant->numEquipe==NULL){
+      printf("Erreur d'allocation - 2");
       exit(2);
     }
+  }
+   
+  for(int k = 0; k < *nbJ; k++){
+      for (int i = 0; i < *nbCombattant; i++){
+        int correct = 0;
+      while(!correct){
+          printf("Choix %d : ", i + 1);
 
-    printf("Entrez les numéros des personnages pour votre équipe (entre 1 et 3).\n");
-    while (i <3) {
-      printf("Choix %d : ", i + 1);
-      scanf("%d", &num);
+        printf(" %s, choisissez votre personnage :\n", NomJoueur[k].nom);
 
-        
-     if (num >= 1 && num <= 3) {
+        printf("Entrez les numéros des personnages pour votre équipe (entre 1 et 3).\n");
+          if (scanf("%d", &num) == 1 && (num == 1 || num == 2 || num == 3)) {
+            int dejaChoisi = 0;
+            for (int j = 0; j < i; j++) {
+                if (combattant->numEquipe[j] == num) {
+                    dejaChoisi = 1;
+                    break;
+                }
+            }
 
-            joueur->equipe[i] = num - 1;
-            i++;
-        } else {
-            printf("Numéro invalide, réessayez.\n");
-            printf("Choix %d : ", i + 1);
-            scanf("%d", &num);
+            if (dejaChoisi) {
+                printf("Ce personnage a déjà été choisi. Veuillez en choisir un autre.\n");
+            } else {
+                combattant->numEquipe[i] = num; // Stocker le choix
+            correct = 1;
+          }
         }
+          else{
+            printf("Erreur. Veuillez choisir un nombre entre 1 et 3.\n");
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF) ;
+          }
+
+          }
+        }
+         
+        
+          
+      
+
+        // Vérification si le personnage a déjà été choisi
+        for (int j = 0; j < i; j++) {
+            if (combattant->numEquipe[j] == num) {
+                printf("Ce personnage a déjà été choisi. Veuillez en choisir un autre.\n");
+                i--; // Réduire le compteur pour redemander le choix
+                break;
+            }
+        }
+
+    printf("\nÉquipe du joueur %d:\n", k); 
+    for (int i = 0; i < *nbCombattant; i++) {
+        int index = combattant->numEquipe[i];
+        printf("%d. %s (PV: %d, ATT: %d, DEF: %d, AG: %d, VIT: %d)\n",
+               i + 1, perso[index].nom, perso[index].pv, perso[index].attaque,
+               perso[index].defense, perso[index].agilite, perso[index].vitesse);
     }
 }
 
+}// VERIFIER SI LES TABLEAUX D'EQUIPES SONT BIEN REMPLIS EN FONCTION DE PERSO CHOISIS.
 
 
