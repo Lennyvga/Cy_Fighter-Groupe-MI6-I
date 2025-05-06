@@ -12,7 +12,16 @@ int nbJ = 0;
 Joueur *NomJoueur;
 Joueur joueur;
 int nbCombattant =  3;
-Info perso[3];
+
+
+Info *perso = malloc(nbJ * sizeof(Info));
+if(perso == NULL){
+  printf("Erreur d'allocation - 1 ");
+  exit(1);
+  };
+
+
+
 int numPerso1, numPerso2;
 //Info combatant1,combatant2;
  
@@ -37,21 +46,25 @@ int numPerso1, numPerso2;
     printf("Erreur d'allocation - 1 ");
     exit(1);
     }
+
+
  
  creationJoueur(NomJoueur, &nbJ);
  fichierPersos(perso,  "perso.txt");
  afficherPersos(perso);
 
- printf("Nombre de joueurs DANS LE MAIN TEST 2  : %d\n", nbJ);
+ //printf("Nombre de joueurs DANS LE MAIN TEST 2  : %d\n", nbJ);
 
  choisirPersos(&joueur, &nbCombattant, nbJ, NomJoueur, perso);
+
+ chargement(perso, NomJoueur, &numPerso1, &numPerso2, nbCombattant, &joueur);
 
  for (int i = 0; i < nbJ; i++) {
   free(NomJoueur[i].nom); // Libérer les noms des joueurs
 }
 
 
-combattre(perso, NomJoueur, &numPerso1, &numPerso2);
+
 
 free(NomJoueur);
 }

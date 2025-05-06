@@ -19,7 +19,7 @@ typedef struct{
     CompSpe competence;
     }Info;
 
-    extern Info perso[3];//A COMPRENDRE COMMENT ON UTILISE LE EXTERN !!!!!
+   // extern Info perso[3];//A COMPRENDRE COMMENT ON UTILISE LE EXTERN !!!!!
 
 typedef struct{
     char *nom;
