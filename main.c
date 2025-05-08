@@ -9,12 +9,14 @@
 int main(){
 srand(time(NULL));
 int nbJ = 0;
-Joueur *NomJoueur;
-Joueur joueur;
-int nbCombattant =  3;
+Joueur *listeJoueurs;
+Personnage personnage;
+//Joueur joueur;
+int nbCombattantsEquipe =  3;
 
 
-Info *perso = malloc(nbJ * sizeof(Info));
+
+Personnage *perso = malloc(nbJ * sizeof(Personnage));
 if(perso == NULL){
   printf("Erreur d'allocation - 1 ");
   exit(1);
@@ -23,12 +25,12 @@ if(perso == NULL){
 
 
 int numPerso1, numPerso2;
-//Info combatant1,combatant2;
+//Personnage combatant1,combatant2;
  
 
 
 
- /*Info perso[3] = {
+ /*Personnage perso[3] = {
     {"Guerrier", 100, 20, 15, 10, 10}, //changer et mettre des pourcentage pour l'esquive etc
     {"Mage", 70, 30, 10, 15, 15},
     {"Archer", 80, 25, 12, 20, 20}
@@ -41,30 +43,30 @@ int numPerso1, numPerso2;
  printf("Nombre de joueurs DANS LE MAIN TEST : %d\n", nbJ);
 
   // Allocation dynamique pour les noms des joueurs
- NomJoueur =  malloc(nbJ * sizeof(Joueur));
-  if(NomJoueur == NULL){
+ listeJoueurs =  malloc(nbJ * sizeof(Joueur));
+  if(listeJoueurs == NULL){
     printf("Erreur d'allocation - 1 ");
     exit(1);
     }
 
 
  
- creationJoueur(NomJoueur, &nbJ);
+ creationJoueur(listeJoueurs, &nbJ);
  fichierPersos(perso,  "perso.txt");
  afficherPersos(perso);
 
- //printf("Nombre de joueurs DANS LE MAIN TEST 2  : %d\n", nbJ);
+ 
 
- choisirPersos(&joueur, &nbCombattant, nbJ, NomJoueur, perso);
+ choisirPersos( &nbCombattantsEquipe, nbJ, listeJoueurs, perso); //Changer &joueur;
 
- chargement(perso, NomJoueur, &numPerso1, &numPerso2, nbCombattant, &joueur);
+ chargement(nbJ, nbCombattantsEquipe, listeJoueurs, perso);
 
  for (int i = 0; i < nbJ; i++) {
-  free(NomJoueur[i].nom); // Libérer les noms des joueurs
+  free(listeJoueurs[i].nom); // Libérer les noms des joueurs
 }
 
 
 
 
-free(NomJoueur);
+free(listeJoueurs);
 }

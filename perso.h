@@ -17,19 +17,17 @@ typedef struct{
     int agilite;
     int vitesse;
     CompSpe competence;
-    }Info;
+    }Personnage;
 
-   // extern Info perso[3];//A COMPRENDRE COMMENT ON UTILISE LE EXTERN !!!!!
+   
 
 typedef struct{
     char *nom;
-    int *numEquipe;
+    int numPerso[3]; // Tableau pour stocker les numéros des personnages choisis //Changer la taille en fonction du nombre de personnages
+    Personnage *personnages;
     }Joueur;
 
 
-// Déclarations des personnages
-extern Info guerrier;
-extern Info sorcier;
-extern Info tank;
+
 
 #endif
