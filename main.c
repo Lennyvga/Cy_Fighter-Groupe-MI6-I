@@ -16,7 +16,8 @@ int nbCombattantsEquipe =  3;
 
 
 
-Personnage *perso = malloc(nbJ * sizeof(Personnage));
+// SK // Personnage *perso = malloc(nbJ * sizeof(Personnage));
+Personnage *perso = malloc(nbCombattantsEquipe * sizeof(Personnage));
 if(perso == NULL){
   printf("Erreur d'allocation - 1 ");
   exit(1);
