@@ -57,7 +57,11 @@ int numPerso1, numPerso2;
 
  
 
- choisirPersos( &nbCombattantsEquipe, nbJ, listeJoueurs, perso); //Changer &joueur;
+ choisirPersos( &nbCombattantsEquipe, nbJ, listeJoueurs, perso); 
+ 
+
+
+
 
  chargement(nbJ, nbCombattantsEquipe, listeJoueurs, perso);
 

@@ -23,6 +23,7 @@
             "program": "entrer le nom du programme, par exemple ${workspaceFolder}/a.out",
             "MIMode": "lldb"
         }
+        
 
     ]
 }

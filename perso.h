@@ -24,7 +24,7 @@ typedef struct{
 typedef struct{
     char *nom;
     int numPerso[3]; // Tableau pour stocker les numéros des personnages choisis //Changer la taille en fonction du nombre de personnages
-    Personnage *personnages;
+    Personnage persos[3];
     }Joueur;
 
 
