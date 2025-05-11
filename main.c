@@ -7,75 +7,52 @@
 //#include "verif.h"
 
 
-
-
 int main(){
-srand(time(NULL));
-
-int nbJ = 6;
-
-Joueur *listeJoueurs;
-Personnage personnage;
-
-int nbCombattantsEquipe = 3;
-
-
-
-<<<<<<< HEAD
-Personnage *perso = malloc(6 * sizeof(Personnage));
-=======
-// SK // Personnage *perso = malloc(nbJ * sizeof(Personnage));
-Personnage *perso = malloc(nbCombattantsEquipe * sizeof(Personnage));
->>>>>>> 80721b34afa597ea15e15ddc8759d612243e175d
-if(perso == NULL){
-  printf("Erreur d'allocation - 1 ");
-  exit(1);
-  };
-
-
-
-
-
- nbJoueur(&nbJ);
-
- 
-
-  // Allocation dynamique pour les noms des joueurs
- listeJoueurs =  malloc(nbJ * sizeof(Joueur));
-  if(listeJoueurs == NULL){
-    printf("Erreur d'allocation - 1 ");
-    exit(1);
+    
+    srand(time(NULL));
+    int nbJ = 0;
+    Joueur *listeJoueurs;
+    int nbCombattantsEquipe = 3;
+    
+    // Allocation des personnages pour toutes les équipes
+    Personnage *perso = malloc(6 * sizeof(Personnage));
+    if(perso == NULL){
+      printf("Erreur d'allocation - 1 ");
+      exit(1);
+    };
+    
+    // Message d'accueil et choix du nombre de joueurs
+    nbJoueur(&nbJ);
+    
+    
+    // Allocation dynamique pour les noms des joueurs
+    listeJoueurs =  malloc(nbJ * sizeof(Joueur));
+    if(listeJoueurs == NULL){
+        printf("Erreur d'allocation - 1 ");
+        exit(1);
     }
 
+    // Creation des Joueurs
+    creationJoueur(listeJoueurs, nbJ);
+     
+    // Extraction des infos des combattants du fichier
+    fichierPersos(perso,  "perso.txt");
+     
+    // Extraction des infos des compétences du fichier
+    fichierCompetences(perso,  "compspe.txt");
+     
+    // Affichage de tous les combattants
+    afficherPersos(perso);
+    
+    // Choix des combattants par équipe/joueur
+    choisirPersos( &nbCombattantsEquipe, nbJ, listeJoueurs, perso); 
+    
+    // Démarrage du combat
+    chargement(nbJ, nbCombattantsEquipe, listeJoueurs, perso);
+    
+    for (int i = 0; i < nbJ; i++) {
+      free(listeJoueurs[i].nom); // Libérer les noms des joueurs
+    }
 
- 
- creationJoueur(listeJoueurs, &nbJ);
- fichierPersos(perso,  "perso.txt");
- fichierCompetences(perso,  "compspe.txt");
- afficherPersos(perso);
-
- 
-
- choisirPersos( &nbCombattantsEquipe, nbJ, listeJoueurs, perso); 
- 
-
-
-
-
- chargement(nbJ, nbCombattantsEquipe, listeJoueurs, perso);
-
- for (int i = 0; i < nbJ; i++) {
-  free(listeJoueurs[i].nom); // Libérer les noms des joueurs
+    free(listeJoueurs);
 }
-
-
-
-
-free(listeJoueurs);
-<<<<<<< HEAD
-
-return 0;
-}
-=======
-}
->>>>>>> 80721b34afa597ea15e15ddc8759d612243e175d
