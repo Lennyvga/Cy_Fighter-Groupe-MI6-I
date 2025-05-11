@@ -169,9 +169,16 @@ void choisirPersos( int *nbCombattantsEquipe, int nbJ, Joueur listeJoueurs[], Pe
 
   for (int k=0;  k < nbJ; k++){
     for(int j=0; j < *nbCombattantsEquipe; j++){
+<<<<<<< HEAD
         //listeJoueurs[i].numPerso[j] = -1; // Initialiser le tableau à -1
         listeJoueurs[k].numPerso[j] = -1; // Initialiser le tableau à -1
     
+=======
+      // SK // listeJoueurs[i].numPerso[j] = -1; // Initialiser le tableau à -1
+      listeJoueurs[k].numPerso[j] = -1; // Initialiser le tableau à -1
+  
+    printf("%d", listeJoueurs[k].numPerso[j]);
+>>>>>>> 80721b34afa597ea15e15ddc8759d612243e175d
   }
 }
 
