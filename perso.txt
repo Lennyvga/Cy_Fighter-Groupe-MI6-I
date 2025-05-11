@@ -1,6 +1,6 @@
-Guerrier 10 20 15 10 10
-Mage 7 30 10 15 15
-Archer 8 25 12 20 20
-Sudo 9 30 15 100 10
-Akira 10 20 12 15 15
-Creed 6 40 8 20 20
+Guerrier 100 20 15 10 10
+Mage 90 30 10 15 15
+Archer 80 25 12 20 20
+Sudo 70 30 15 6 10
+Akira 100 20 12 15 15
+Creed 70 40 8 20 20
