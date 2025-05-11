@@ -22,7 +22,7 @@ typedef struct{
     int recharge_en_cours; //variable
     int valeur;
     int cible_en_cours; //variable
-    int cible; /* ALL=0, ADV=1 */
+    int type_cible; /* ALL=0, ADV=1 */
     int propriete; /*  ATT=0, DEF=1, AGI=2, PV=3 */
 }CompSpe;
     
@@ -37,9 +37,9 @@ typedef struct{
 }Personnage;
 
 typedef struct{
-    char *nom;
+    char nom[10];
     int numPerso[3]; // Tableau pour stocker les numéros des personnages choisis //Changer la taille en fonction du nombre de personnages
-    //Personnage persos[3];
+
 }Joueur;
 
 
